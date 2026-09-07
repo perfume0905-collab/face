@@ -1,10 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 import { INITIAL_DEMO_POSTS } from './defaultData';
 
-// 로컬 스토리지에서 Supabase 연결 설정 로드
+// 로컬 스토리지 또는 환경 변수에서 Supabase 연결 설정 로드
 export const getStoredSupabaseConfig = () => {
-  const url = localStorage.getItem('supabase_url') || '';
-  const anonKey = localStorage.getItem('supabase_anon_key') || '';
+  const url = localStorage.getItem('supabase_url') || import.meta.env.VITE_SUPABASE_URL || '';
+  const anonKey = localStorage.getItem('supabase_anon_key') || import.meta.env.VITE_SUPABASE_ANON_KEY || '';
   return { url, anonKey };
 };
 
